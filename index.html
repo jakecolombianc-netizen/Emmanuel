@@ -12,7 +12,8 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: white;
-    background: radial-gradient(circle at top, #1a0033, #000000 80%);
+    background: radial-gradient(circle at top, #1a0033, #000000 80%),
+                url('https://www.transparenttextures.com/patterns/stardust.png');
 }
 
 /* HERO */
@@ -29,20 +30,29 @@ body {
 
 .hero p {
     font-size: 1em;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
-/* IMAGEN */
-.imagen-mistica {
+/* DONACION (REEMPLAZA IMAGEN) */
+.donacion {
     text-align: center;
-    margin: 20px 0;
+    margin: 30px auto;
+    max-width: 600px;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(224,195,252,0.3);
+    box-shadow: 0 0 25px rgba(138,43,226,0.3);
 }
 
-.imagen-mistica img {
-    width: 70%;
-    max-width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(138,43,226,0.4);
+.donacion p {
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+.highlight {
+    color: #c084fc;
+    font-weight: 600;
 }
 
 /* SECCIONES */
@@ -65,128 +75,4 @@ h2 {
 }
 
 /* FORM */
-form {
-    max-width: 400px;
-    margin: auto;
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 15px;
-}
-
-input, textarea, select, button {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 0.9em;
-    box-sizing: border-box;
-}
-
-input, textarea, select {
-    background: rgba(255,255,255,0.1);
-    color: white;
-}
-
-select option {
-    color: black;
-}
-
-/* BOTÓN */
-button {
-    background: linear-gradient(45deg, #8a2be2, #4b0082);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.03);
-}
-
-footer {
-    text-align: center;
-    padding: 15px;
-    opacity: 0.6;
-    font-size: 0.8em;
-}
-</style>
-
-</head>
-<body>
-
-<!-- HERO -->
-<div class="hero">
-    <h1>Lecturas Psíquicas con Emmanuel</h1>
-    <p>Descubre los mensajes ocultos del universo y conecta con tu destino.</p>
-</div>
-
-<!-- IMAGEN -->
-<div class="imagen-mistica">
-    <img src="https://images.unsplash.com/photo-1502136969935-8d071b8e3cfe?q=80&w=800" alt="Energía espiritual">
-</div>
-
-<!-- SERVICIO -->
-<div class="section">
-    <h2>¿Qué es una lectura psíquica?</h2>
-    <p>
-        Una lectura psíquica es un espacio de conexión intuitiva donde se perciben energías,
-        emociones y mensajes sutiles que reflejan lo que estas viviendo. A través
-        de esta guía, puedes encontrar mayor claridad en temas como el amor, la toma de decisiones importantes
-        y tu camino de crecimiento personal. 
-        <br><br>
-        También permite conectar con la energía de tus mascotas, tanto aquellas que aún te acompañan
-        como las que han partido, brindando mensajes, comprensión y sanación emocional.
-    </p>
-</div>
-
-<!-- FORM -->
-<div class="section">
-    <h2>Reserva tu sesión</h2>
-
-    <form onsubmit="enviarWhatsApp(event)">
-        <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="email" id="correo" placeholder="Correo electrónico" required>
-
-        <select id="tipo" required>
-            <option value="">Tipo de consulta</option>
-            <option>Amor</option>
-            <option>Trabajo</option>
-            <option>Pareja</option>
-            <option>Sueños</option>
-            <option>Animales</option>
-        </select>
-
-        <textarea id="mensaje" placeholder="Cuéntame tu situación"></textarea>
-
-        <button type="submit">Reservar por WhatsApp</button>
-    </form>
-</div>
-
-<footer>
-    © 2026 Lecturas Psíquicas
-</footer>
-
-<script>
-function enviarWhatsApp(event) {
-    event.preventDefault();
-
-    let nombre = document.getElementById("nombre").value;
-    let correo = document.getElementById("correo").value;
-    let tipo = document.getElementById("tipo").value;
-    let mensaje = document.getElementById("mensaje").value;
-
-    let texto = `Hola, quiero reservar una lectura:%0A
-Nombre: ${nombre}%0A
-Correo: ${correo}%0A
-Tipo: ${tipo}%0A
-Mensaje: ${mensaje}`;
-
-    let numero = "573218065239";
-
-    window.open(`https://wa.me/${numero}?text=${texto}`, "_blank");
-}
-</script>
-
-</body>
 </html>
