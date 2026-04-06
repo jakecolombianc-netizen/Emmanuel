@@ -1,78 +1,62 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecturas Psíquicas</title>
+!DOCTYPE html>
+    <p>
+        Una lectura psíquica es un espacio de conexión intuitiva donde se perciben energías,
+        emociones y mensajes sutiles que reflejan lo que estás viviendo. A través
+        de esta guía, puedes encontrar claridad en el amor, decisiones importantes
+        y tu proceso personal.
+        <br><br>
+        También permite conectar con la energía de tus mascotas, tanto aquellas que aún te acompañan
+        como las que han partido, brindando mensajes, comprensión y sanación emocional.
+    </p>
+</div>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+<div class="section">
+    <h2>Reserva tu sesión</h2>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    background: radial-gradient(circle at top, #1a0033, #000000 80%),
-                url('https://www.transparenttextures.com/patterns/stardust.png');
+    <form onsubmit="enviarWhatsApp(event)">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="email" id="correo" placeholder="Correo electrónico" required>
+
+        <select id="tipo" required>
+            <option value="">Tipo de consulta</option>
+            <option>Amor</option>
+            <option>Trabajo</option>
+            <option>Pareja</option>
+            <option>Sueños</option>
+            <option>Animales</option>
+        </select>
+
+        <textarea id="mensaje" placeholder="Cuéntame tu situación"></textarea>
+
+        <button type="submit">Reservar por WhatsApp</button>
+    </form>
+</div>
+
+<footer>
+    © 2026 Lecturas Psíquicas
+</footer>
+
+<script>
+function enviarWhatsApp(event) {
+    event.preventDefault();
+
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let tipo = document.getElementById("tipo").value;
+    let mensaje = document.getElementById("mensaje").value;
+
+    let texto = `Hola, quiero reservar una lectura:%0A
+Nombre: ${nombre}%0A
+Correo: ${correo}%0A
+Tipo: ${tipo}%0A
+Mensaje: ${mensaje}`;
+
+    let numero = "573218065239";
+
+    window.open(`https://wa.me/${numero}?text=${texto}`, "_blank");
 }
+</script>
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 80px 20px 30px;
-}
-
-.hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2em;
-    color: #e0c3fc;
-}
-
-.hero p {
-    font-size: 1em;
-    opacity: 0.85;
-}
-
-/* DONACION (REEMPLAZA IMAGEN) */
-.donacion {
-    text-align: center;
-    margin: 30px auto;
-    max-width: 600px;
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 15px;
-    border: 1px solid rgba(224,195,252,0.3);
-    box-shadow: 0 0 25px rgba(138,43,226,0.3);
-}
-
-.donacion p {
-    line-height: 1.6;
-    font-size: 0.95em;
-}
-
-.highlight {
-    color: #c084fc;
-    font-weight: 600;
-}
-
-/* SECCIONES */
-.section {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-h2 {
-    font-family: 'Cinzel', serif;
-    color: #e0c3fc;
-}
-
-/* TEXTO */
-.section p {
-    max-width: 600px;
-    margin: auto;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-/* FORM */
+</body>
 </html>
+
