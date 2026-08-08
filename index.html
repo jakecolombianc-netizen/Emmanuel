@@ -13,7 +13,6 @@ body {
     font-family: 'Poppins', sans-serif;
     color: white;
 
-    /* FONDO CORRECTO (sin conflicto) */
     background-color: #000000;
     background-image: 
         radial-gradient(circle at top, #1a0033, #000000 80%),
@@ -114,6 +113,10 @@ button:hover {
     transform: scale(1.05);
 }
 
+.telegram-button {
+    background: linear-gradient(45deg, #229ED9, #1479B8);
+}
+
 footer {
     text-align: center;
     padding: 15px;
@@ -123,29 +126,43 @@ footer {
 </style>
 
 </head>
+
 <body>
 
 <div class="hero">
-    <h1>Lecturas Psíquicas con Emmanuel</h1>
+    <h1>Lecturas Psíquicas con @limo_303</h1>
     <p>Conecta con la energía del universo y recibe guía clara para tu vida.</p>
 </div>
 
 <div class="donacion">
     <p>
-        Cada contribución es recibida con <span class="highlight">gratitud y respeto</span>, y permite que este espacio continúe brindando guía y acompañamiento a quienes lo necesitan.
+        Cada contribución es recibida con 
+        <span class="highlight">gratitud y respeto</span>, 
+        y permite que este espacio continúe brindando guía y acompañamiento a quienes lo necesitan.
         <br><br>
-        Puedes realizarla a través de <span class="highlight">Nequi al 301 338 6067</span> o mediante la llave <span class="highlight">@COO3218065239</span>.
+
+        <span class="highlight">
+            El precio de una sesión de 10 a 15 minutos es de 20,000 pesos colombianos.
+        </span>
+        <br><br>
+
+        Puedes realizarla a través de 
+        <span class="highlight">Nequi al 301 338 6067</span> 
+        o mediante la llave 
+        <span class="highlight">@COO3218065239</span>.
     </p>
 </div>
 
 <div class="section">
     <h2>¿Qué es una lectura psíquica?</h2>
+
     <p>
         Una lectura psíquica es un espacio de conexión intuitiva donde se perciben energías,
         emociones y mensajes sutiles que reflejan lo que estás viviendo. A través
         de esta guía, puedes encontrar la claridad necesaria para tomar decisiones alineadas
         con tu propósito y crecimiento personal.
         <br><br>
+
         También permite conectar con la energía de tus mascotas, tanto aquellas que aún te acompañan
         como las que han partido, brindando mensajes, comprensión y sanación emocional.
     </p>
@@ -155,8 +172,20 @@ footer {
     <h2>Reserva tu sesión</h2>
 
     <form onsubmit="enviarWhatsApp(event)">
-        <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="email" id="correo" placeholder="Correo electrónico" required>
+
+        <input 
+            type="text" 
+            id="nombre" 
+            placeholder="Nombre" 
+            required
+        >
+
+        <input 
+            type="email" 
+            id="correo" 
+            placeholder="Correo electrónico" 
+            required
+        >
 
         <select id="tipo" required>
             <option value="">Tipo de consulta</option>
@@ -167,9 +196,23 @@ footer {
             <option>Animales</option>
         </select>
 
-        <textarea id="mensaje" placeholder="Cuéntame tu situación"></textarea>
+        <textarea 
+            id="mensaje" 
+            placeholder="Cuéntame tu situación"
+        ></textarea>
 
-        <button type="submit">Reservar por WhatsApp</button>
+        <button type="submit">
+            Reservar por WhatsApp
+        </button>
+
+        <button 
+            type="button" 
+            class="telegram-button"
+            onclick="return false;"
+        >
+            Reservar por Telegram
+        </button>
+
     </form>
 </div>
 
@@ -186,18 +229,20 @@ function enviarWhatsApp(event) {
     let tipo = document.getElementById("tipo").value;
     let mensaje = document.getElementById("mensaje").value;
 
-    let texto = `Hola, quiero reservar una lectura:%0A
-Nombre: ${nombre}%0A
-Correo: ${correo}%0A
-Tipo: ${tipo}%0A
-Mensaje: ${mensaje}`;
+    let texto = `Hola, quiero reservar una lectura:
 
-    let numero = "573218065239";
+Nombre: ${nombre}
+Correo: ${correo}
+Tipo de consulta: ${tipo}
+Situación: ${mensaje}`;
 
-    window.open(`https://wa.me/${numero}?text=${texto}`, "_blank");
+    let numero = "573108065239";
+
+    let url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
 }
 </script>
 
 </body>
 </html>
-
