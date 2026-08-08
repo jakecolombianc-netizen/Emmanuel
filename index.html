@@ -12,7 +12,6 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: white;
-
     background-color: #000000;
     background-image: 
         radial-gradient(circle at top, #1a0033, #000000 80%),
@@ -208,7 +207,6 @@ footer {
         <button 
             type="button" 
             class="telegram-button"
-            onclick="return false;"
         >
             Reservar por Telegram
         </button>
@@ -224,21 +222,21 @@ footer {
 function enviarWhatsApp(event) {
     event.preventDefault();
 
-    let nombre = document.getElementById("nombre").value;
-    let correo = document.getElementById("correo").value;
-    let tipo = document.getElementById("tipo").value;
-    let mensaje = document.getElementById("mensaje").value;
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+    const tipo = document.getElementById("tipo").value;
+    const mensaje = document.getElementById("mensaje").value;
 
-    let texto = `Hola, quiero reservar una lectura:
+    const texto =
+        "Hola, quiero reservar una lectura:\n\n" +
+        "Nombre: " + nombre + "\n" +
+        "Correo: " + correo + "\n" +
+        "Tipo de consulta: " + tipo + "\n" +
+        "Situación: " + mensaje;
 
-Nombre: ${nombre}
-Correo: ${correo}
-Tipo de consulta: ${tipo}
-Situación: ${mensaje}`;
+    const numero = "573108065239";
 
-    let numero = "573108065239";
-
-    let url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
 
     window.open(url, "_blank");
 }
