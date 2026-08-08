@@ -12,6 +12,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: white;
+
     background-color: #000000;
     background-image: 
         radial-gradient(circle at top, #1a0033, #000000 80%),
@@ -29,6 +30,16 @@ body {
     font-family: 'Cinzel', serif;
     font-size: 2.2em;
     color: #e0c3fc;
+    margin-bottom: 5px;
+}
+
+.hero h3 {
+    font-family: 'Cinzel', serif;
+    color: #c084fc;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 .hero p {
@@ -130,6 +141,7 @@ footer {
 
 <div class="hero">
     <h1>Lecturas Psíquicas con @limo_303</h1>
+    <h3>El intérprete del Amor</h3>
     <p>Conecta con la energía del universo y recibe guía clara para tu vida.</p>
 </div>
 
@@ -222,21 +234,21 @@ footer {
 function enviarWhatsApp(event) {
     event.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const correo = document.getElementById("correo").value;
-    const tipo = document.getElementById("tipo").value;
-    const mensaje = document.getElementById("mensaje").value;
+    let nombre = document.getElementById("nombre").value;
+    let correo = document.getElementById("correo").value;
+    let tipo = document.getElementById("tipo").value;
+    let mensaje = document.getElementById("mensaje").value;
 
-    const texto =
-        "Hola, quiero reservar una lectura:\n\n" +
-        "Nombre: " + nombre + "\n" +
-        "Correo: " + correo + "\n" +
-        "Tipo de consulta: " + tipo + "\n" +
-        "Situación: " + mensaje;
+    let texto = `Hola, quiero reservar una lectura:
 
-    const numero = "573108065239";
+Nombre: ${nombre}
+Correo: ${correo}
+Tipo de consulta: ${tipo}
+Situación: ${mensaje}`;
 
-    const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+    let numero = "573108065239";
+
+    let url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
 
     window.open(url, "_blank");
 }
