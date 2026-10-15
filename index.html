@@ -10,14 +10,13 @@
   <style>
     :root {
       --night: #10172b;
-      --panel: rgba(255,255,255,.07);
       --gold: #e7c985;
       --cream: #fff8e9;
       --muted: #c6cadd;
+      --panel: rgba(255,255,255,.07);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -26,11 +25,12 @@
       font-family: Georgia, "Times New Roman", serif;
       background:
         radial-gradient(ellipse at 50% -10%, rgba(112,94,156,.30), transparent 42%),
-        var(--night);
+        #10172b;
       min-height: 100vh;
     }
 
     a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
     .wrap {
       width: min(1080px, 92%);
@@ -77,11 +77,10 @@
     .brand-name small {
       display: block;
       color: var(--gold);
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: .08em;
-      margin-top: 3px;
+      font: 10px/1.5 Arial, sans-serif;
+      letter-spacing: .04em;
       text-transform: none;
+      margin-top: 3px;
     }
 
     .nav-link {
@@ -191,6 +190,15 @@
       overflow: hidden;
     }
 
+    .reading-panel::before {
+      content: "✦";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      color: #e7c98570;
+      font-size: 22px;
+    }
+
     .reading-panel h2 { margin-bottom: 8px; }
 
     .card-stage {
@@ -230,7 +238,7 @@
     }
 
     .card-symbol {
-      font-size: 65px;
+      font-size: 72px;
       line-height: 1.2;
     }
 
@@ -276,6 +284,15 @@
       font: bold 13px Arial, sans-serif;
       text-decoration: none;
       cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #b9e4d3;
+      outline-offset: 4px;
     }
 
     .btn-gold {
@@ -288,6 +305,7 @@
     .btn:disabled {
       opacity: .65;
       cursor: not-allowed;
+      transform: none;
     }
 
     .fine-print {
@@ -372,14 +390,19 @@
       font-weight: normal;
     }
 
+    .footer-tiktok { text-decoration: none; }
+    .footer-tiktok:hover strong { text-decoration: underline; }
+
     @media (max-width: 760px) {
       .hero { padding: 48px 0 32px; }
       .main-grid { grid-template-columns: 1fr; gap: 16px; }
+
       .offer-box {
         flex-direction: column;
         align-items: stretch;
         text-align: center;
       }
+
       .offer-actions { min-width: 0; }
       .topics { justify-content: center; }
       .nav-link { font-size: 12px; }
@@ -390,26 +413,23 @@
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#inicio" aria-label="Lecturas Psíquicas con Emmanuel">
+      <a class="brand" href="#inicio" aria-label="Inicio">
         <span class="brand-mark" aria-hidden="true">
           <!-- Símbolo estilizado inspirado en Hathor -->
-          <svg viewBox="0 0 40 40" width="34" height="34"
+          <svg viewBox="0 0 40 40" width="32" height="32"
                xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="13" r="5.5" fill="currentColor"/>
-            <path d="M15 13 C8 12 6 6 7 3 C13 5 16 8 16 12"
+            <circle cx="20" cy="13" r="6" fill="currentColor"/>
+            <path d="M14 13 C8 12 6 6 7 3 C13 5 16 8 16 12
+                     M26 13 C32 12 34 6 33 3 C27 5 24 8 24 12"
                   fill="none" stroke="currentColor" stroke-width="2.2"
                   stroke-linecap="round"/>
-            <path d="M25 13 C32 12 34 6 33 3 C27 5 24 8 24 12"
-                  fill="none" stroke="currentColor" stroke-width="2.2"
-                  stroke-linecap="round"/>
-            <path d="M14 17 C14 24 12 29 9 33 M26 17 C26 24 28 29 31 33"
+            <path d="M14 17 C14 24 12 29 9 33
+                     M26 17 C26 24 28 29 31 33
+                     M14 19 C16 23 24 23 26 19"
                   fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round"/>
-            <path d="M14 19 C16 23 24 23 26 19"
-                  fill="none" stroke="currentColor" stroke-width="2"/>
           </svg>
         </span>
-
         <span class="brand-name">
           Lecturas Psíquicas
           <small>con Emmanuel, El intérprete del amor</small>
@@ -436,18 +456,19 @@
       <article class="panel">
         <h2>Tu espacio de reflexión</h2>
         <p class="intro">
-          Piensa en un tema importante para ti y selecciona tu carta.
-          La elección es aleatoria y puedes conservar tu resultado en este navegador.
+          La carta es una invitación a detenerte, observar tu situación
+          y escuchar tus propias preguntas. No necesitas compartir
+          información privada.
         </p>
 
         <ol class="steps">
           <li>
             <span class="step-num">1</span>
-            <span>Piensa en aquello que deseas explorar en este momento.</span>
+            <span>Piensa en un tema importante para ti en este momento.</span>
           </li>
           <li>
             <span class="step-num">2</span>
-            <span>Selecciona una carta de la baraja Lenormand de 36 cartas.</span>
+            <span>Selecciona una carta al azar de la baraja Lenormand de 36 cartas.</span>
           </li>
           <li>
             <span class="step-num">3</span>
@@ -458,15 +479,15 @@
 
       <article class="panel reading-panel" aria-live="polite">
         <h2>Tu carta Lenormand</h2>
-        <p class="intro">Respira tranquilamente y elige tu carta.</p>
+        <p class="intro">Tómate una respiración tranquila y elige tu carta.</p>
 
         <div class="card-stage">
-          <div class="lenormand-card" id="card">
+          <div class="lenormand-card" id="card" aria-label="Carta aún no seleccionada">
             <div class="card-inner">
               <span class="card-number" id="card-number">36 CARTAS</span>
               <span class="card-symbol" id="card-symbol">✧</span>
               <span class="card-name" id="card-name">Tu carta te espera</span>
-              <span class="card-caption">Lenormand</span>
+              <span class="card-caption" id="card-caption">Lenormand</span>
             </div>
           </div>
         </div>
@@ -496,7 +517,7 @@
             a Emmanuel para conversar sobre la lectura que deseas solicitar.
           </p>
 
-          <div class="topics">
+          <div class="topics" aria-label="Temas posibles">
             <span class="topic">Amor</span>
             <span class="topic">Trabajo</span>
             <span class="topic">Dinero</span>
@@ -517,7 +538,7 @@
             Consultar por WhatsApp ↗
           </a>
 
-          <p class="fine-print">
+          <p class="fine-print" style="text-align: center;">
             Escríbeme para confirmar disponibilidad y forma de pago.
           </p>
         </div>
@@ -527,8 +548,13 @@
 
   <footer>
     <div class="wrap">
-      <strong>Lecturas Psíquicas con Emmanuel</strong><br>
-      El intérprete del amor.
+      <a class="footer-tiktok"
+         href="https://www.tiktok.com/@limo_303"
+         target="_blank" rel="noopener noreferrer">
+        <strong>Lecturas Psíquicas con Emmanuel</strong>
+      </a>
+      <br>
+      <span>El intérprete del amor · Sígueme en TikTok</span>
     </div>
   </footer>
 
@@ -537,50 +563,53 @@
     const FREE_CARD_KEY = "emmanuel_lenormand_free_card_v1";
 
     const cards = [
-      {name:"El Jinete",symbol:"🐎",prompt:"¿Qué novedad o movimiento merece tu atención ahora?"},
-      {name:"El Trébol",symbol:"🍀",prompt:"Observa las pequeñas oportunidades que aparecen en lo cotidiano."},
-      {name:"El Barco",symbol:"⛵",prompt:"¿Qué cambio o nueva perspectiva te gustaría explorar?"},
-      {name:"La Casa",symbol:"⌂",prompt:"Piensa en tu hogar, tus raíces y aquello que te da estabilidad."},
-      {name:"El Árbol",symbol:"🌳",prompt:"¿Qué necesitas cuidar con paciencia para favorecer tu bienestar?"},
-      {name:"Las Nubes",symbol:"☁️",prompt:"Cuando algo no está claro, date tiempo antes de decidir."},
-      {name:"La Serpiente",symbol:"🐍",prompt:"Mira una situación desde otro ángulo."},
-      {name:"El Ataúd",symbol:"▰",prompt:"¿Qué etapa podría estar pidiendo cierre o transformación?"},
-      {name:"El Ramo",symbol:"💐",prompt:"Haz espacio para la gratitud y los gestos amables."},
-      {name:"La Guadaña",symbol:"⚒",prompt:"Reflexiona sobre una decisión pendiente."},
-      {name:"El Látigo",symbol:"〰",prompt:"Observa si un patrón repetido necesita un enfoque diferente."},
-      {name:"Los Pájaros",symbol:"🐦",prompt:"¿Qué conversación sería importante tener con calma?"},
-      {name:"La Niña",symbol:"✿",prompt:"Acércate a una situación con curiosidad y apertura."},
-      {name:"El Zorro",symbol:"🦊",prompt:"Combina intuición con observación práctica."},
-      {name:"El Oso",symbol:"🐻",prompt:"Piensa en tus recursos, tus límites y tu fortaleza."},
-      {name:"Las Estrellas",symbol:"✦",prompt:"¿Qué esperanza o propósito orienta tus próximos pasos?"},
-      {name:"La Cigüeña",symbol:"🕊",prompt:"Considera qué pequeño cambio podría acercarte a otra etapa."},
-      {name:"El Perro",symbol:"🐕",prompt:"Recuerda el valor de la confianza y el apoyo mutuo."},
-      {name:"La Torre",symbol:"♜",prompt:"Toma distancia para observar con mayor perspectiva."},
-      {name:"El Jardín",symbol:"❀",prompt:"¿Qué vínculos o nuevas conexiones deseas cultivar?"},
-      {name:"La Montaña",symbol:"⛰",prompt:"Reconoce el obstáculo y piensa en un paso realista."},
-      {name:"Los Caminos",symbol:"⑂",prompt:"Identifica qué opción se acerca más a tus valores."},
-      {name:"Los Ratones",symbol:"🐁",prompt:"Presta atención a aquello que consume tu energía."},
-      {name:"El Corazón",symbol:"♡",prompt:"¿Qué necesita atención en tus afectos y en tu relación contigo?"},
-      {name:"El Anillo",symbol:"◎",prompt:"Reflexiona sobre los compromisos que eliges."},
-      {name:"El Libro",symbol:"▤",prompt:"¿Qué necesitas aprender o comprender mejor?"},
-      {name:"La Carta",symbol:"✉",prompt:"¿Qué mensaje necesitas expresar o qué información confirmar?"},
-      {name:"El Hombre",symbol:"♙",prompt:"Reflexiona sobre tu perspectiva personal en esta situación."},
-      {name:"La Mujer",symbol:"♟",prompt:"Considera otras perspectivas y la importancia del diálogo."},
-      {name:"Los Lirios",symbol:"⚜",prompt:"¿Qué te ayudaría a encontrar serenidad y armonía?"},
-      {name:"El Sol",symbol:"☼",prompt:"Reconoce tus fortalezas y dales un buen uso."},
-      {name:"La Luna",symbol:"☾",prompt:"Escucha tus emociones y considera qué necesitas."},
-      {name:"La Llave",symbol:"⚿",prompt:"Busca la pregunta que podría abrir una nueva posibilidad."},
-      {name:"Los Peces",symbol:"♧",prompt:"Reflexiona sobre tus recursos y prioridades materiales."},
-      {name:"El Ancla",symbol:"⚓",prompt:"¿Qué te brinda estabilidad y merece tu constancia?"},
-      {name:"La Cruz",symbol:"✝",prompt:"Reconoce aquello que pesa y considera qué apoyo necesitas."}
+      { name: "El Jinete", symbol: "🐎", prompt: "¿Qué novedad o movimiento merece tu atención ahora?" },
+      { name: "El Trébol", symbol: "🍀", prompt: "Observa las pequeñas oportunidades que aparecen en lo cotidiano." },
+      { name: "El Barco", symbol: "⛵", prompt: "¿Qué cambio o nueva perspectiva te gustaría explorar?" },
+      { name: "La Casa", symbol: "⌂", prompt: "Piensa en tu hogar, tus raíces y aquello que te da estabilidad." },
+      { name: "El Árbol", symbol: "🌳", prompt: "¿Qué necesitas cuidar con paciencia para favorecer tu bienestar?" },
+      { name: "Las Nubes", symbol: "☁️", prompt: "Cuando algo no está claro, date tiempo antes de decidir." },
+      { name: "La Serpiente", symbol: "🐍", prompt: "Mira una situación desde otro ángulo." },
+      { name: "El Ataúd", symbol: "▰", prompt: "¿Qué etapa podría estar pidiendo cierre o transformación?" },
+      { name: "El Ramo", symbol: "💐", prompt: "Haz espacio para la gratitud y los gestos amables." },
+      { name: "La Guadaña", symbol: "⚒", prompt: "Reflexiona sobre una decisión pendiente." },
+      { name: "El Látigo", symbol: "〰", prompt: "Observa si un patrón repetido necesita un enfoque diferente." },
+      { name: "Los Pájaros", symbol: "🐦", prompt: "¿Qué conversación sería importante tener con calma?" },
+      { name: "La Niña", symbol: "✿", prompt: "Acércate a una situación con curiosidad y apertura." },
+      { name: "El Zorro", symbol: "🦊", prompt: "Combina intuición con observación práctica." },
+      { name: "El Oso", symbol: "🐻", prompt: "Piensa en tus recursos, tus límites y tu fortaleza." },
+      { name: "Las Estrellas", symbol: "✦", prompt: "¿Qué esperanza o propósito orienta tus próximos pasos?" },
+      { name: "La Cigüeña", symbol: "🕊", prompt: "Considera qué pequeño cambio podría acercarte a otra etapa." },
+      { name: "El Perro", symbol: "🐕", prompt: "Recuerda el valor de la confianza y el apoyo mutuo." },
+      { name: "La Torre", symbol: "♜", prompt: "Toma distancia para observar con mayor perspectiva." },
+      { name: "El Jardín", symbol: "❀", prompt: "¿Qué vínculos o nuevas conexiones deseas cultivar?" },
+      { name: "La Montaña", symbol: "⛰", prompt: "Reconoce el obstáculo y piensa en un paso realista." },
+      { name: "Los Caminos", symbol: "⑂", prompt: "Identifica qué opción se acerca más a tus valores." },
+      { name: "Los Ratones", symbol: "🐁", prompt: "Presta atención a aquello que consume tu energía." },
+      { name: "El Corazón", symbol: "♡", prompt: "¿Qué necesita atención en tus afectos y en tu relación contigo?" },
+      { name: "El Anillo", symbol: "◎", prompt: "Reflexiona sobre los compromisos que eliges." },
+      { name: "El Libro", symbol: "▤", prompt: "¿Qué necesitas aprender o comprender mejor?" },
+      { name: "La Carta", symbol: "✉", prompt: "¿Qué mensaje necesitas expresar o qué información confirmar?" },
+      { name: "El Hombre", symbol: "♙", prompt: "Reflexiona sobre tu perspectiva personal en esta situación." },
+      { name: "La Mujer", symbol: "♟", prompt: "Considera otras perspectivas y la importancia del diálogo." },
+      { name: "Los Lirios", symbol: "⚜", prompt: "¿Qué te ayudaría a encontrar serenidad y armonía?" },
+      { name: "El Sol", symbol: "☼", prompt: "Reconoce tus fortalezas y dales un buen uso." },
+      { name: "La Luna", symbol: "☾", prompt: "Escucha tus emociones y considera qué necesitas." },
+      { name: "La Llave", symbol: "⚿", prompt: "Busca la pregunta que podría abrir una nueva posibilidad." },
+      { name: "Los Peces", symbol: "♧", prompt: "Reflexiona sobre tus recursos y prioridades materiales." },
+      { name: "El Ancla", symbol: "⚓", prompt: "¿Qué te brinda estabilidad y merece tu constancia?" },
+      { name: "La Cruz", symbol: "✝", prompt: "Reconoce aquello que pesa y considera qué apoyo necesitas." }
     ];
 
     const drawButton = document.getElementById("draw-button");
+    const card = document.getElementById("card");
     const cardNumber = document.getElementById("card-number");
     const cardSymbol = document.getElementById("card-symbol");
     const cardName = document.getElementById("card-name");
+    const cardCaption = document.getElementById("card-caption");
     const result = document.getElementById("result");
     const freeNote = document.getElementById("free-note");
+    const whatsappButton = document.getElementById("whatsapp-button");
 
     function showCard(index) {
       const chosen = cards[index];
@@ -588,6 +617,8 @@
       cardNumber.textContent = String(index + 1).padStart(2, "0") + " / 36";
       cardSymbol.textContent = chosen.symbol;
       cardName.textContent = chosen.name;
+      cardCaption.textContent = "Lenormand";
+      card.setAttribute("aria-label", chosen.name + ", carta " + (index + 1) + " de 36");
 
       result.replaceChildren();
 
@@ -601,51 +632,62 @@
 
       drawButton.textContent = "✓ Ya elegiste tu carta gratuita";
       drawButton.disabled = true;
+      drawButton.setAttribute("aria-disabled", "true");
 
       freeNote.textContent =
         "Tu carta ya fue seleccionada y se conservará en este navegador.";
     }
 
     function drawCard() {
-      // Impide elegir una segunda carta en el mismo navegador.
-      if (localStorage.getItem(FREE_CARD_KEY) !== null) return;
+      try {
+        const savedIndex = localStorage.getItem(FREE_CARD_KEY);
 
-      const index = Math.floor(Math.random() * cards.length);
+        if (savedIndex !== null) {
+          const index = Number(savedIndex);
+          if (Number.isInteger(index) && index >= 0 && index < cards.length) {
+            showCard(index);
+          }
+          return;
+        }
 
-      localStorage.setItem(FREE_CARD_KEY, String(index));
-      showCard(index);
+        const index = Math.floor(Math.random() * cards.length);
+        localStorage.setItem(FREE_CARD_KEY, String(index));
+        showCard(index);
+      } catch (error) {
+        // Si el navegador bloquea el almacenamiento, permite una selección.
+        const index = Math.floor(Math.random() * cards.length);
+        showCard(index);
+        freeNote.textContent =
+          "Tu carta ha sido seleccionada. Mantén abierta esta página para conservar el resultado.";
+      }
     }
 
     function restoreFreeCard() {
-      const savedIndex = localStorage.getItem(FREE_CARD_KEY);
+      try {
+        const savedIndex = localStorage.getItem(FREE_CARD_KEY);
 
-      if (savedIndex !== null) {
-        const index = Number(savedIndex);
+        if (savedIndex !== null) {
+          const index = Number(savedIndex);
 
-        if (Number.isInteger(index) && index >= 0 && index < cards.length) {
-          showCard(index);
-        } else {
-          localStorage.removeItem(FREE_CARD_KEY);
+          if (Number.isInteger(index) && index >= 0 && index < cards.length) {
+            showCard(index);
+          } else {
+            localStorage.removeItem(FREE_CARD_KEY);
+          }
         }
+      } catch (error) {
+        // La página continúa funcionando aunque el almacenamiento esté bloqueado.
       }
     }
 
     const message =
       "Hola, Emmanuel. Quisiera información sobre una lectura personalizada de $10.000 COP.";
 
-    document.getElementById("whatsapp-button").href =
-      "https://wa.me/" + WHATSAPP_NUMBER +
-      "?text=" + encodeURIComponent(message);
+    whatsappButton.href =
+      "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
 
     drawButton.addEventListener("click", drawCard);
-
-    try {
-      restoreFreeCard();
-    } catch (error) {
-      // Si el navegador bloquea el almacenamiento, la selección sigue funcionando.
-      freeNote.textContent =
-        "Selecciona una carta. Mantén abierta esta página para conservar tu resultado.";
-    }
+    restoreFreeCard();
   </script>
 </body>
 </html>
