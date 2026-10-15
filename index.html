@@ -1,22 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#10172b">
-  <meta name="description" content="Lecturas Psíquicas con Emmanuel. Explora una carta Lenormand gratuita y solicita una consulta personalizada.">
-  <title>Lecturas Psíquicas con Emmanuel</title>
+  <meta name="description" content="Lecturas Psíquicas con Emmanuel. Descubre una carta Lenormand y solicita una lectura personalizada.">
+  <title>Lecturas Psíquicas con Emmanuel, El intérprete del amor</title>
+
   <style>
     :root {
       --night: #10172b;
+      --panel: rgba(255,255,255,.07);
       --gold: #e7c985;
       --cream: #fff8e9;
       --muted: #c6cadd;
-      --panel: rgba(255,255,255,.07);
     }
+
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--cream);
@@ -26,81 +29,393 @@
         var(--night);
       min-height: 100vh;
     }
+
     a { color: inherit; }
-    .wrap { width: min(1080px, 92%); margin: 0 auto; }
-    header { padding: 22px 0; border-bottom: 1px solid #ffffff18; }
-    .nav { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+
+    .wrap {
+      width: min(1080px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid #ffffff18;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
     .brand-mark {
-      display:grid; place-items:center; width:43px; height:43px;
-      border:1px solid var(--gold); border-radius:50%;
-      color:var(--gold); font-size:23px;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      flex-shrink: 0;
     }
-    .brand-name { font-size:15px; letter-spacing:.08em; text-transform:uppercase; line-height:1.4; }
+
+    .brand-name {
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
     .brand-name small {
-      display:block; color:var(--gold); font:10px Arial,sans-serif;
-      letter-spacing:.22em; margin-top:3px;
+      display: block;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: .08em;
+      margin-top: 3px;
+      text-transform: none;
     }
-    .nav-link { color:var(--muted); font:13px Arial,sans-serif; text-decoration:none; }
-    .hero { text-align:center; padding:66px 0 42px; }
-    .eyebrow { color:var(--gold); font:11px Arial,sans-serif; text-transform:uppercase; letter-spacing:.28em; }
-    h1 { font-size:clamp(36px,6vw,62px); line-height:1.06; font-weight:normal; max-width:780px; margin:18px auto; }
-    h1 span { color:var(--gold); font-style:italic; }
-    .hero p { max-width:630px; margin:0 auto; color:var(--muted); font:16px/1.8 Arial,sans-serif; }
-    .hero-ornament { margin:25px auto 0; color:var(--gold); font-size:23px; letter-spacing:10px; }
-    .main-grid { display:grid; grid-template-columns:.88fr 1.12fr; gap:24px; align-items:stretch; padding-bottom:54px; }
-    .panel { background:var(--panel); border:1px solid #ffffff24; border-radius:22px; padding:clamp(22px,4vw,36px); box-shadow:0 22px 60px #0005; }
-    .panel h2 { margin:0 0 12px; font-weight:normal; font-size:27px; }
-    .intro { color:var(--muted); font:14px/1.75 Arial,sans-serif; margin:0 0 22px; }
-    .steps { list-style:none; margin:0; padding:0; display:grid; gap:15px; }
-    .steps li { display:flex; gap:12px; align-items:flex-start; color:#eceaf4; font:14px/1.6 Arial,sans-serif; }
-    .step-num { flex:0 0 27px; width:27px; height:27px; display:grid; place-items:center; border:1px solid #e7c98588; border-radius:50%; color:var(--gold); font-size:12px; }
-    .note { margin-top:24px; padding:14px 15px; border-left:2px solid var(--gold); background:#e7c98512; color:#ded9e8; font:12px/1.7 Arial,sans-serif; }
-    .reading-panel { text-align:center; position:relative; overflow:hidden; }
-    .reading-panel h2 { margin-bottom:8px; }
-    .card-stage { min-height:285px; display:flex; justify-content:center; align-items:center; padding:8px 0 20px; }
-    .lenormand-card { width:170px; height:245px; border-radius:12px; padding:8px; background:linear-gradient(145deg,#f8eed8,#dfcda8); box-shadow:0 18px 38px #0006; color:#24304a; transform:rotate(-1deg); }
-    .card-inner { height:100%; border:1px solid #9f8758; border-radius:7px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:13px 10px 12px; position:relative; }
-    .card-number { font:11px Arial,sans-serif; letter-spacing:.15em; }
-    .card-symbol { font-size:72px; line-height:1; }
-    .card-name { font-size:17px; text-align:center; }
-    .card-caption { font:9px Arial,sans-serif; text-transform:uppercase; letter-spacing:.2em; }
-    .result { min-height:78px; margin:0 auto 16px; max-width:420px; }
-    .result h3 { color:var(--gold); font-weight:normal; font-size:21px; margin:0 0 7px; }
-    .result p { color:var(--muted); font:13px/1.75 Arial,sans-serif; margin:0; }
-    .btn { border:0; border-radius:999px; padding:15px 23px; min-height:49px; display:inline-flex; justify-content:center; align-items:center; gap:9px; font:bold 13px Arial,sans-serif; text-decoration:none; cursor:pointer; }
-    .btn-gold { background:var(--gold); color:#20233a; }
-    .btn-outline { color:var(--cream); background:transparent; border:1px solid #ffffff40; }
-    .fine-print { color:#aeb5cb; font:11px/1.6 Arial,sans-serif; margin:14px 0 0; }
-    .offer { padding:0 0 60px; }
-    .offer-box { display:flex; align-items:center; justify-content:space-between; gap:25px; border:1px solid #e7c98559; background:linear-gradient(110deg,#e7c9851c,#ffffff09); border-radius:22px; padding:clamp(24px,4vw,38px); }
-    .offer-copy { max-width:620px; }
-    .offer h2 { font-size:clamp(25px,4vw,34px); font-weight:normal; margin:0 0 9px; }
-    .offer p { color:var(--muted); font:14px/1.8 Arial,sans-serif; }
-    .price { white-space:nowrap; color:var(--gold); font-size:27px; margin-bottom:14px; text-align:center; }
-    .price small { display:block; color:var(--muted); font:11px Arial,sans-serif; margin-top:4px; }
-    .offer-actions { display:flex; flex-direction:column; align-items:stretch; min-width:210px; }
-    .topics { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
-    .topic { border:1px solid #ffffff29; color:#e6e4ee; border-radius:999px; padding:8px 12px; font:12px Arial,sans-serif; }
-    footer { border-top:1px solid #ffffff18; padding:24px 0 32px; text-align:center; color:#aeb5cb; font:11px/1.8 Arial,sans-serif; }
-    footer strong { color:#e7d6ad; font-weight:normal; }
-    @media(max-width:760px) {
-      .hero { padding:48px 0 32px; }
-      .main-grid { grid-template-columns:1fr; gap:16px; }
-      .offer-box { flex-direction:column; align-items:stretch; text-align:center; }
-      .offer-actions { min-width:0; }
-      .topics { justify-content:center; }
-      .nav-link { font-size:12px; }
+
+    .nav-link {
+      color: var(--muted);
+      font: 13px Arial, sans-serif;
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 66px 0 42px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font: 11px Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 62px);
+      line-height: 1.06;
+      font-weight: normal;
+      max-width: 780px;
+      margin: 18px auto;
+    }
+
+    h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 630px;
+      margin: 0 auto;
+      color: var(--muted);
+      font: 16px/1.8 Arial, sans-serif;
+    }
+
+    .hero-ornament {
+      margin: 25px auto 0;
+      color: var(--gold);
+      font-size: 23px;
+      letter-spacing: 10px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 24px;
+      align-items: stretch;
+      padding-bottom: 54px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #ffffff24;
+      border-radius: 22px;
+      padding: clamp(22px, 4vw, 36px);
+      box-shadow: 0 22px 60px #0005;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-weight: normal;
+      font-size: 27px;
+    }
+
+    .intro {
+      color: var(--muted);
+      font: 14px/1.75 Arial, sans-serif;
+      margin: 0 0 22px;
+    }
+
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 15px;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #eceaf4;
+      font: 14px/1.6 Arial, sans-serif;
+    }
+
+    .step-num {
+      flex: 0 0 27px;
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #e7c98588;
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .reading-panel {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reading-panel h2 { margin-bottom: 8px; }
+
+    .card-stage {
+      min-height: 285px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 0 20px;
+    }
+
+    .lenormand-card {
+      width: 170px;
+      height: 245px;
+      border-radius: 12px;
+      padding: 8px;
+      background: linear-gradient(145deg, #f8eed8, #dfcda8);
+      box-shadow: 0 18px 38px #0006;
+      color: #24304a;
+      transform: rotate(-1deg);
+    }
+
+    .card-inner {
+      height: 100%;
+      border: 1px solid #9f8758;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 10px 12px;
+      position: relative;
+    }
+
+    .card-number {
+      font: 11px Arial, sans-serif;
+      letter-spacing: .15em;
+    }
+
+    .card-symbol {
+      font-size: 65px;
+      line-height: 1.2;
+    }
+
+    .card-name {
+      font-size: 17px;
+      text-align: center;
+    }
+
+    .card-caption {
+      font: 9px Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+
+    .result {
+      min-height: 78px;
+      margin: 0 auto 16px;
+      max-width: 420px;
+    }
+
+    .result h3 {
+      color: var(--gold);
+      font-weight: normal;
+      font-size: 21px;
+      margin: 0 0 7px;
+    }
+
+    .result p {
+      color: var(--muted);
+      font: 13px/1.75 Arial, sans-serif;
+      margin: 0;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 23px;
+      min-height: 49px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      font: bold 13px Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #20233a;
+    }
+
+    .btn-gold:hover { background: #f0dba7; }
+
+    .btn:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+
+    .fine-print {
+      color: #aeb5cb;
+      font: 11px/1.6 Arial, sans-serif;
+      margin: 14px 0 0;
+    }
+
+    .offer { padding: 0 0 60px; }
+
+    .offer-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      border: 1px solid #e7c98559;
+      background: linear-gradient(110deg, #e7c9851c, #ffffff09);
+      border-radius: 22px;
+      padding: clamp(24px, 4vw, 38px);
+    }
+
+    .offer-copy { max-width: 620px; }
+
+    .offer h2 {
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: normal;
+      margin: 0 0 9px;
+    }
+
+    .offer p {
+      color: var(--muted);
+      font: 14px/1.8 Arial, sans-serif;
+    }
+
+    .price {
+      white-space: nowrap;
+      color: var(--gold);
+      font-size: 27px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .price small {
+      display: block;
+      color: var(--muted);
+      font: 11px Arial, sans-serif;
+      margin-top: 4px;
+    }
+
+    .offer-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-width: 210px;
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .topic {
+      border: 1px solid #ffffff29;
+      color: #e6e4ee;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: 12px Arial, sans-serif;
+    }
+
+    footer {
+      border-top: 1px solid #ffffff18;
+      padding: 24px 0 32px;
+      text-align: center;
+      color: #aeb5cb;
+      font: 11px/1.8 Arial, sans-serif;
+    }
+
+    footer strong {
+      color: #e7d6ad;
+      font-weight: normal;
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 48px 0 32px; }
+      .main-grid { grid-template-columns: 1fr; gap: 16px; }
+      .offer-box {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .offer-actions { min-width: 0; }
+      .topics { justify-content: center; }
+      .nav-link { font-size: 12px; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#inicio">
-        <span class="brand-mark">✧</span>
-        <span class="brand-name">Lecturas Psíquicas<small>con Emmanuel</small></span>
+      <a class="brand" href="#inicio" aria-label="Lecturas Psíquicas con Emmanuel">
+        <span class="brand-mark" aria-hidden="true">
+          <!-- Símbolo estilizado inspirado en Hathor -->
+          <svg viewBox="0 0 40 40" width="34" height="34"
+               xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="13" r="5.5" fill="currentColor"/>
+            <path d="M15 13 C8 12 6 6 7 3 C13 5 16 8 16 12"
+                  fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round"/>
+            <path d="M25 13 C32 12 34 6 33 3 C27 5 24 8 24 12"
+                  fill="none" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round"/>
+            <path d="M14 17 C14 24 12 29 9 33 M26 17 C26 24 28 29 31 33"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round"/>
+            <path d="M14 19 C16 23 24 23 26 19"
+                  fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </span>
+
+        <span class="brand-name">
+          Lecturas Psíquicas
+          <small>con Emmanuel, El intérprete del amor</small>
+        </span>
       </a>
+
       <a class="nav-link" href="#consulta">Consulta personalizada ↗</a>
     </div>
   </header>
@@ -109,41 +424,65 @@
     <section class="hero wrap">
       <div class="eyebrow">Un momento para ti</div>
       <h1>Escucha tu intuición.<br><span>Abre una posibilidad.</span></h1>
-      <p>Descubre una carta Lenormand y dedica unos instantes a reflexionar sobre aquello que hoy ocupa tus pensamientos. Si deseas profundizar, puedes solicitar una lectura personal con Emmanuel.</p>
-      <div class="hero-ornament">✧ · ✦ · ✧</div>
+      <p>
+        Descubre una carta Lenormand y dedica unos instantes a reflexionar
+        sobre aquello que hoy ocupa tus pensamientos. Si deseas profundizar,
+        puedes solicitar una lectura personal con Emmanuel.
+      </p>
+      <div class="hero-ornament" aria-hidden="true">✧ · ✦ · ✧</div>
     </section>
 
     <section class="wrap main-grid" aria-label="Lectura gratuita">
       <article class="panel">
         <h2>Tu espacio de reflexión</h2>
-        <p class="intro">La carta es una invitación simbólica a detenerte, observar tu situación y escuchar tus propias preguntas. No necesitas compartir información privada.</p>
+        <p class="intro">
+          Piensa en un tema importante para ti y selecciona tu carta.
+          La elección es aleatoria y puedes conservar tu resultado en este navegador.
+        </p>
+
         <ol class="steps">
-          <li><span class="step-num">1</span><span>Piensa en un tema que sea importante para ti en este momento.</span></li>
-          <li><span class="step-num">2</span><span>Cuando estés listo, selecciona una carta al azar de la baraja Lenormand.</span></li>
-          <li><span class="step-num">3</span><span>Lee el mensaje de reflexión y decide si deseas conversar con Emmanuel.</span></li>
+          <li>
+            <span class="step-num">1</span>
+            <span>Piensa en aquello que deseas explorar en este momento.</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>Selecciona una carta de la baraja Lenormand de 36 cartas.</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>Lee el mensaje y, si deseas profundizar, contacta a Emmanuel.</span>
+          </li>
         </ol>
-        <div class="note">Esta experiencia gratuita es una introducción simbólica y general. No sustituye una consulta personalizada ni pretende reproducir una interpretación espiritual individual.</div>
       </article>
 
       <article class="panel reading-panel" aria-live="polite">
         <h2>Tu carta Lenormand</h2>
-        <p class="intro">Tómate una respiración tranquila y elige tu carta.</p>
+        <p class="intro">Respira tranquilamente y elige tu carta.</p>
+
         <div class="card-stage">
-          <div class="lenormand-card" id="card" aria-label="Carta aún no seleccionada">
+          <div class="lenormand-card" id="card">
             <div class="card-inner">
               <span class="card-number" id="card-number">36 CARTAS</span>
               <span class="card-symbol" id="card-symbol">✧</span>
               <span class="card-name" id="card-name">Tu carta te espera</span>
-              <span class="card-caption" id="card-caption">Lenormand</span>
+              <span class="card-caption">Lenormand</span>
             </div>
           </div>
         </div>
+
         <div class="result" id="result" aria-live="polite">
           <h3>¿Qué te gustaría explorar?</h3>
-          <p>Selecciona tu carta para recibir una breve invitación a la reflexión.</p>
+          <p>Selecciona tu carta para recibir un mensaje de reflexión.</p>
         </div>
-        <button class="btn btn-gold" id="draw-button" type="button">✦ Elegir mi carta gratuita</button>
-        <p class="fine-print" id="free-note">La selección se realiza al azar en tu navegador. No guardamos tus preguntas.</p>
+
+        <button class="btn btn-gold" id="draw-button" type="button">
+          ✦ Elegir mi carta gratuita
+        </button>
+
+        <p class="fine-print" id="free-note">
+          Puedes elegir una sola carta gratuita en este navegador.
+        </p>
       </article>
     </section>
 
@@ -152,22 +491,161 @@
         <div class="offer-copy">
           <div class="eyebrow">Si deseas ir más allá</div>
           <h2>Una lectura personal contigo</h2>
-          <p>Cada experiencia personal es única. Contacta directamente a Emmanuel para consultar disponibilidad y conversar sobre la lectura que estás buscando.</p>
+          <p>
+            Cada consulta es una experiencia personal. Contacta directamente
+            a Emmanuel para conversar sobre la lectura que deseas solicitar.
+          </p>
+
           <div class="topics">
-            <span class="topic">Amor</span><span class="topic">Trabajo</span><span class="topic">Dinero</span><span class="topic">Familia</span><span class="topic">Camino espiritual</span>
+            <span class="topic">Amor</span>
+            <span class="topic">Trabajo</span>
+            <span class="topic">Dinero</span>
+            <span class="topic">Familia</span>
+            <span class="topic">Camino espiritual</span>
           </div>
         </div>
+
         <div class="offer-actions">
-          <div class="price">$10.000 COP<small>por lectura personalizada</small></div>
-          <a class="btn btn-gold" id="whatsapp-button" href="#" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp ↗</a>
-          <p class="fine-print">Escríbenos para confirmar disponibilidad y forma de pago.</p>
+          <div class="price">
+            $10.000 COP
+            <small>por lectura personalizada</small>
+          </div>
+
+          <a class="btn btn-gold" id="whatsapp-button"
+             href="https://wa.me/573218065239"
+             target="_blank" rel="noopener noreferrer">
+            Consultar por WhatsApp ↗
+          </a>
+
+          <p class="fine-print">
+            Escríbeme para confirmar disponibilidad y forma de pago.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap"><strong>Lecturas Psíquicas con Emmanuel</strong><br>Una experiencia de reflexión personal. Las lecturas no garantizan resultados ni sustituyen asesoría profesional.</div>
+    <div class="wrap">
+      <strong>Lecturas Psíquicas con Emmanuel</strong><br>
+      El intérprete del amor.
+    </div>
   </footer>
+
+  <script>
+    const WHATSAPP_NUMBER = "573218065239";
+    const FREE_CARD_KEY = "emmanuel_lenormand_free_card_v1";
+
+    const cards = [
+      {name:"El Jinete",symbol:"🐎",prompt:"¿Qué novedad o movimiento merece tu atención ahora?"},
+      {name:"El Trébol",symbol:"🍀",prompt:"Observa las pequeñas oportunidades que aparecen en lo cotidiano."},
+      {name:"El Barco",symbol:"⛵",prompt:"¿Qué cambio o nueva perspectiva te gustaría explorar?"},
+      {name:"La Casa",symbol:"⌂",prompt:"Piensa en tu hogar, tus raíces y aquello que te da estabilidad."},
+      {name:"El Árbol",symbol:"🌳",prompt:"¿Qué necesitas cuidar con paciencia para favorecer tu bienestar?"},
+      {name:"Las Nubes",symbol:"☁️",prompt:"Cuando algo no está claro, date tiempo antes de decidir."},
+      {name:"La Serpiente",symbol:"🐍",prompt:"Mira una situación desde otro ángulo."},
+      {name:"El Ataúd",symbol:"▰",prompt:"¿Qué etapa podría estar pidiendo cierre o transformación?"},
+      {name:"El Ramo",symbol:"💐",prompt:"Haz espacio para la gratitud y los gestos amables."},
+      {name:"La Guadaña",symbol:"⚒",prompt:"Reflexiona sobre una decisión pendiente."},
+      {name:"El Látigo",symbol:"〰",prompt:"Observa si un patrón repetido necesita un enfoque diferente."},
+      {name:"Los Pájaros",symbol:"🐦",prompt:"¿Qué conversación sería importante tener con calma?"},
+      {name:"La Niña",symbol:"✿",prompt:"Acércate a una situación con curiosidad y apertura."},
+      {name:"El Zorro",symbol:"🦊",prompt:"Combina intuición con observación práctica."},
+      {name:"El Oso",symbol:"🐻",prompt:"Piensa en tus recursos, tus límites y tu fortaleza."},
+      {name:"Las Estrellas",symbol:"✦",prompt:"¿Qué esperanza o propósito orienta tus próximos pasos?"},
+      {name:"La Cigüeña",symbol:"🕊",prompt:"Considera qué pequeño cambio podría acercarte a otra etapa."},
+      {name:"El Perro",symbol:"🐕",prompt:"Recuerda el valor de la confianza y el apoyo mutuo."},
+      {name:"La Torre",symbol:"♜",prompt:"Toma distancia para observar con mayor perspectiva."},
+      {name:"El Jardín",symbol:"❀",prompt:"¿Qué vínculos o nuevas conexiones deseas cultivar?"},
+      {name:"La Montaña",symbol:"⛰",prompt:"Reconoce el obstáculo y piensa en un paso realista."},
+      {name:"Los Caminos",symbol:"⑂",prompt:"Identifica qué opción se acerca más a tus valores."},
+      {name:"Los Ratones",symbol:"🐁",prompt:"Presta atención a aquello que consume tu energía."},
+      {name:"El Corazón",symbol:"♡",prompt:"¿Qué necesita atención en tus afectos y en tu relación contigo?"},
+      {name:"El Anillo",symbol:"◎",prompt:"Reflexiona sobre los compromisos que eliges."},
+      {name:"El Libro",symbol:"▤",prompt:"¿Qué necesitas aprender o comprender mejor?"},
+      {name:"La Carta",symbol:"✉",prompt:"¿Qué mensaje necesitas expresar o qué información confirmar?"},
+      {name:"El Hombre",symbol:"♙",prompt:"Reflexiona sobre tu perspectiva personal en esta situación."},
+      {name:"La Mujer",symbol:"♟",prompt:"Considera otras perspectivas y la importancia del diálogo."},
+      {name:"Los Lirios",symbol:"⚜",prompt:"¿Qué te ayudaría a encontrar serenidad y armonía?"},
+      {name:"El Sol",symbol:"☼",prompt:"Reconoce tus fortalezas y dales un buen uso."},
+      {name:"La Luna",symbol:"☾",prompt:"Escucha tus emociones y considera qué necesitas."},
+      {name:"La Llave",symbol:"⚿",prompt:"Busca la pregunta que podría abrir una nueva posibilidad."},
+      {name:"Los Peces",symbol:"♧",prompt:"Reflexiona sobre tus recursos y prioridades materiales."},
+      {name:"El Ancla",symbol:"⚓",prompt:"¿Qué te brinda estabilidad y merece tu constancia?"},
+      {name:"La Cruz",symbol:"✝",prompt:"Reconoce aquello que pesa y considera qué apoyo necesitas."}
+    ];
+
+    const drawButton = document.getElementById("draw-button");
+    const cardNumber = document.getElementById("card-number");
+    const cardSymbol = document.getElementById("card-symbol");
+    const cardName = document.getElementById("card-name");
+    const result = document.getElementById("result");
+    const freeNote = document.getElementById("free-note");
+
+    function showCard(index) {
+      const chosen = cards[index];
+
+      cardNumber.textContent = String(index + 1).padStart(2, "0") + " / 36";
+      cardSymbol.textContent = chosen.symbol;
+      cardName.textContent = chosen.name;
+
+      result.replaceChildren();
+
+      const title = document.createElement("h3");
+      title.textContent = chosen.name;
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = chosen.prompt;
+
+      result.append(title, paragraph);
+
+      drawButton.textContent = "✓ Ya elegiste tu carta gratuita";
+      drawButton.disabled = true;
+
+      freeNote.textContent =
+        "Tu carta ya fue seleccionada y se conservará en este navegador.";
+    }
+
+    function drawCard() {
+      // Impide elegir una segunda carta en el mismo navegador.
+      if (localStorage.getItem(FREE_CARD_KEY) !== null) return;
+
+      const index = Math.floor(Math.random() * cards.length);
+
+      localStorage.setItem(FREE_CARD_KEY, String(index));
+      showCard(index);
+    }
+
+    function restoreFreeCard() {
+      const savedIndex = localStorage.getItem(FREE_CARD_KEY);
+
+      if (savedIndex !== null) {
+        const index = Number(savedIndex);
+
+        if (Number.isInteger(index) && index >= 0 && index < cards.length) {
+          showCard(index);
+        } else {
+          localStorage.removeItem(FREE_CARD_KEY);
+        }
+      }
+    }
+
+    const message =
+      "Hola, Emmanuel. Quisiera información sobre una lectura personalizada de $10.000 COP.";
+
+    document.getElementById("whatsapp-button").href =
+      "https://wa.me/" + WHATSAPP_NUMBER +
+      "?text=" + encodeURIComponent(message);
+
+    drawButton.addEventListener("click", drawCard);
+
+    try {
+      restoreFreeCard();
+    } catch (error) {
+      // Si el navegador bloquea el almacenamiento, la selección sigue funcionando.
+      freeNote.textContent =
+        "Selecciona una carta. Mantén abierta esta página para conservar tu resultado.";
+    }
+  </script>
 </body>
 </html>
